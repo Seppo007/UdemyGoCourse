@@ -49,9 +49,5 @@ func newDeckFromFile(filename string) deck {
 		os.Exit(1)
 	}
 	deckArr := strings.Split(string(bs), ",")
-	newDeck := deck{}
-	for _, str := range deckArr {
-		newDeck = append(newDeck, str)
-	}
-	return newDeck
+	return deck(deckArr)
 }
