@@ -5,6 +5,7 @@ import (
 	"strings"
 	"io/ioutil"
 	"os"
+	"math/rand"
 )
 
 type deck []string
@@ -50,4 +51,11 @@ func newDeckFromFile(filename string) deck {
 	}
 	deckArr := strings.Split(string(bs), ",")
 	return deck(deckArr)
+}
+
+func (d deck) shuffle() {
+	for i := range d {
+		newPosition := rand.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
