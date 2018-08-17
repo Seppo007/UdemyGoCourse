@@ -23,5 +23,9 @@ func main() {
 		},
 	}
 
-	fmt.Printf("%+v", jim)
+	jim.print()
+}
+
+func (p person) print() {
+	fmt.Printf("%+v", p)
 }
