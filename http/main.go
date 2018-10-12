@@ -2,18 +2,20 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
 
 func main() {
-	resp, err := http.Get("https://www.google.de")
+	resp, err := http.Get("https://www.google.com")
 	if err != nil {
 		fmt.Printf("There was an error: %v", err)
 		os.Exit(-1);
 	}
-	p := make([]byte, 12000);
+
 	fmt.Printf("Response status is: %s\n", resp.Status)
-	resp.Body.Read(p)
-	fmt.Printf("Body is: %s\n", p)
+
+	io.Copy(os.Stdout, resp.Body)
+	resp.Body.Close()
 }
