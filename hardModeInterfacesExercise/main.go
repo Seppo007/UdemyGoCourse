@@ -11,7 +11,7 @@ func main() {
 	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Printf("Could not open file \"%v\"!", fileName)
-		return
+		os.Exit(-1)
 	}
 
 	io.Copy(os.Stdout, file)
