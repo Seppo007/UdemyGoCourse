@@ -21,11 +21,11 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for link := range c {
-		go func() {
-			time.Sleep(3 * time.Second)
+	for l := range c {
+		go func(link string) {
+			time.Sleep(2 * time.Second)
 			checkLink(link, c)
-		}()
+		}(l)
 	}
 
 	fmt.Println("Main Routine finished")
